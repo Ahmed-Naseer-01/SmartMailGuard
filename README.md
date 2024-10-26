@@ -1,4 +1,6 @@
 # SmartMailGuard (Spam Email Detector)
+![image](https://github.com/user-attachments/assets/fdb50854-e7ac-4e8a-be7d-7ece89c221ea)
+
 
 ## Overview
 The Spam Email Detector is a web application built with Django that leverages machine learning to classify emails as either spam or ham. This project utilizes a trained classifier model saved using `joblib`, which predicts the category of the email based on user input. The application features a sleek, hacker-themed interface, making it both functional and visually engaging.
