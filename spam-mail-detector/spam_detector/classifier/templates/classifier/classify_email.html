@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Email Detector</title>
+    <style>
+        /* General Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        body {
+            background-color: #000;
+            color: #33ff33;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        /* Container Styling */
+        .container {
+            background-color: #111;
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4);
+            border: 1px solid #33ff33;
+        }
+        
+        /* Heading Styling */
+        h1 {
+            text-align: center;
+            color: #00ff00;
+            text-shadow: 0 0 8px #00ff00;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form p {
+            margin-bottom: 15px;
+            color: #33ff33;
+        }
+        label {
+            color: #33ff33;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], textarea {
+            background-color: #222;
+            border: 1px solid #33ff33;
+            color: #33ff33;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 8px;
+            resize: vertical;
+        }
+        button[type="submit"] {
+            background-color: #33ff33;
+            color: #000;
+            border: none;
+            padding: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover {
+            background-color: #00cc00;
+        }
+
+        /* Result Message Styling */
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #000;
+        }
+        .result.ham {
+            background-color: #4CAF50; /* Green for Ham */
+        }
+        .result.spam {
+            background-color: #ff3333; /* Red for Spam */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Spam Email Detector</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Check Email</button>
+        </form>
+        {% if result %}
+            <div class="result {% if result == 'This is a Ham Email!' %}ham{% else %}spam{% endif %}">
+                Result: {{ result }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+    
